@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GigaShield IncomeGuard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>GigaShield IncomeGuard</h1>
+  <p>AI-Driven Income Protection</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Worker Registration</h2>
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="income" placeholder="Daily Income (₹)">
+    <select id="city">
+      <option>Dehradun</option>
+      <option>Delhi</option>
+      <option>Mumbai</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <h2>Risk & Premium Calculator</h2>
+    <input type="number" id="risk" placeholder="Risk Score (0-100)">
+    <button onclick="calculatePremium()">Calculate Premium</button>
+    <div class="result" id="premiumResult"></div>
+  </div>
+
+  <div class="card">
+    <h2>Trigger Simulation</h2>
+    <select id="event">
+      <option value="rain">Heavy Rain</option>
+      <option value="heat">Extreme Heat</option>
+      <option value="outage">Platform Outage</option>
+    </select>
+    <button onclick="triggerEvent()">Simulate Event</button>
+    <div class="result" id="triggerResult"></div>
+  </div>
+
+</div>
+
+<script>
+  function calculatePremium() {
+    let risk = document.getElementById("risk").value;
+    let base = 20;
+    let premium = base + (risk * 0.5);
+
+    document.getElementById("premiumResult").innerText =
+      "Estimated Premium: ₹" + premium + " / week";
+  }
+
+  function triggerEvent() {
+    let event = document.getElementById("event").value;
+    let message = "";
+
+    if (event === "rain") {
+      message = "Rain detected → Claim triggered";
+    } else if (event === "heat") {
+      message = "Heat alert → Full payout";
+    } else {
+      message = "Platform outage → Partial payout";
+    }
+
+    document.getElementById("triggerResult").innerText = message;
+  }
+</script>
+
+</body>
+</html>
